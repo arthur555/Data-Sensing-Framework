@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+<style>
+body {
+    margin: 0;
+    background: #262626;
+    color: #aaaaaa;
+    height: 100%;
+}
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+h2 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+
+</style>
+</head>
+<body id ="body">
+{% block body %}
+<div class="container">
+	<h1> Please type in your desired tweeter key words
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Submit</button>
+	</form></h1>
+</div>
+<h3>Name entered: {{ text }} </h3>
+
+<table>
+	{% for object in objects %}
+	<tr>
+		<td>{{ object.user}}</td>
+		<td>{{ object.text }}</td>
+		<td>{{ object.time }}</td>
+		<td><a href="{% url 'polls:cluster' object.cluster%}">{{ object.cluster }} </a></td>
+	</tr>
+	{% endfor %}
+</table>
+</body>
+{% endblock %}
+</html>

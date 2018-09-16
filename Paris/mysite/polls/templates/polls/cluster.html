@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+<style>
+body {
+    margin: 0;
+    background: #262626;
+    color: #aaaaaa;
+    height: 100%;
+}
+
+</style>
+</head>
+<body id ="body">
+<h3>You are looking at: Cluster {{ cluster }} </h3>
+
+<table>
+	{% for object in objects %}
+	<tr>
+		<td>{{ object.user}}</td>
+		<td>{{ object.text }}</td>
+		<td>{{ object.time }}</td>
+	</tr>
+	{% endfor %}
+</table>
+</body>
+</html>
